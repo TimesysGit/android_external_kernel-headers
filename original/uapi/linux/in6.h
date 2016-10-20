@@ -22,7 +22,7 @@
 #define _UAPI_LINUX_IN6_H
 
 #include <linux/types.h>
-#include <linux/libc-compat.h>
+#include <uapi/linux/libc-compat.h>
 
 /*
  *	IPv6 address structure
