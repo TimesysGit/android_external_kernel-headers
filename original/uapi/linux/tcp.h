@@ -20,6 +20,7 @@
 #include <linux/types.h>
 #include <asm/byteorder.h>
 #include <linux/socket.h>
+
 struct tcphdr {
 	__be16	source;
 	__be16	dest;
@@ -54,6 +55,7 @@ struct tcphdr {
 	__sum16	check;
 	__be16	urg_ptr;
 };
+
 /*
  *	The union cast uses a gcc extension to avoid aliasing problems
  *  (union is compatible to any of its members)
@@ -109,6 +111,8 @@ enum {
 #define TCP_REPAIR_OPTIONS	22
 #define TCP_FASTOPEN		23	/* Enable FastOpen on listeners */
 #define TCP_TIMESTAMP		24
+#define TCP_NOTSENT_LOWAT	25	/* limit number of unsent bytes in write queue */
+#define TCP_CC_INFO		26	/* Get Congestion Control (optional) info */
 
 struct tcp_repair_opt {
 	__u32	opt_code;
@@ -183,18 +187,22 @@ struct tcp_info {
 	__u32	tcpi_rcv_space;
 
 	__u32	tcpi_total_retrans;
+
+	__u64	tcpi_pacing_rate;
+	__u64	tcpi_max_pacing_rate;
+	__u64	tcpi_bytes_acked; /* RFC4898 tcpEStatsAppHCThruOctetsAcked */
+	__u64	tcpi_bytes_received; /* RFC4898 tcpEStatsAppHCThruOctetsReceived */
 };
 
 /* for TCP_MD5SIG socket option */
 #define TCP_MD5SIG_MAXKEYLEN	80
 
 struct tcp_md5sig {
-#ifdef __KERNEL__
 	struct __kernel_sockaddr_storage tcpm_addr;	/* address associated */
-#endif	
 	__u16	__tcpm_pad1;				/* zero */
 	__u16	tcpm_keylen;				/* key length */
 	__u32	__tcpm_pad2;				/* zero */
 	__u8	tcpm_key[TCP_MD5SIG_MAXKEYLEN];		/* key (binary) */
 };
+
 #endif /* _UAPI_LINUX_TCP_H */
