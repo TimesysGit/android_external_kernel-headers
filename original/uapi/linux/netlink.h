@@ -31,6 +31,7 @@
 #define NETLINK_INET_DIAG	NETLINK_SOCK_DIAG
 
 #define MAX_LINKS 32		
+
 struct sockaddr_nl {
 	__kernel_sa_family_t	nl_family;	/* AF_NETLINK	*/
 	unsigned short	nl_pad;		/* zero		*/
@@ -98,8 +99,8 @@ struct nlmsghdr {
 struct nlmsgerr {
 	int		error;
 	struct nlmsghdr msg;
-
 };
+
 #define NETLINK_ADD_MEMBERSHIP	1
 #define NETLINK_DROP_MEMBERSHIP	2
 #define NETLINK_PKTINFO		3
@@ -107,11 +108,11 @@ struct nlmsgerr {
 #define NETLINK_NO_ENOBUFS	5
 #define NETLINK_RX_RING		6
 #define NETLINK_TX_RING		7
-#ifdef __KERNEL__
+
 struct nl_pktinfo {
 	__u32	group;
 };
-#endif
+
 struct nl_mmap_req {
 	unsigned int	nm_block_size;
 	unsigned int	nm_block_nr;
