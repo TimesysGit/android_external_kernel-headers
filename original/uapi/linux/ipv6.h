@@ -1,7 +1,7 @@
 #ifndef _UAPI_IPV6_H
 #define _UAPI_IPV6_H
 
-#include <linux/libc-compat.h>
+#include <uapi/linux/libc-compat.h>
 #include <linux/types.h>
 #include <linux/in6.h>
 #include <asm/byteorder.h>

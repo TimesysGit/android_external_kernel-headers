@@ -8,7 +8,7 @@
   Copyright (c) 2004 Red Hat, Inc., James Morris <jmorris@redhat.com>
 */
 
-#include <linux/libc-compat.h>
+#include <uapi/linux/libc-compat.h>
 
 #ifndef _UAPI_LINUX_XATTR_H
 #define _UAPI_LINUX_XATTR_H

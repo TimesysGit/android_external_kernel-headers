@@ -7,7 +7,7 @@
 
 #include <linux/compiler.h>
 #include <linux/types.h>
-#include <linux/bpf_common.h>
+#include <uapi/linux/bpf_common.h>
 
 /*
  * Current version of the filter code architecture.
