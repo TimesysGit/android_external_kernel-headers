@@ -5,7 +5,7 @@
 
 #define CODA_PSDEV_MAJOR 67
 #define MAX_CODADEVS  5	   /* how many do we allow */
-
+#ifdef __KERNEL__
 
 /* messages between coda filesystem in kernel and Venus */
 struct upc_req {
@@ -23,5 +23,5 @@ struct upc_req {
 #define CODA_REQ_READ   0x2
 #define CODA_REQ_WRITE  0x4
 #define CODA_REQ_ABORT  0x8
-
+#endif
 #endif /* _UAPI__CODA_PSDEV_H */
