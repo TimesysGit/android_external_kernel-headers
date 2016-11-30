@@ -145,11 +145,11 @@ struct icmp6hdr {
 #define ICMPV6_FILTER_PASS		2
 #define ICMPV6_FILTER_BLOCKOTHERS	3
 #define ICMPV6_FILTER_PASSONLY		4
-
+#ifdef __KERNEL__
 struct icmp6_filter {
 	__u32		data[8];
 };
-
+#endif
 /*
  *	Definitions for MLDv2
  */

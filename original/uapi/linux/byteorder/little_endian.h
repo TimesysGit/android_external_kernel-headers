@@ -39,7 +39,7 @@
 #define __be32_to_cpu(x) __swab32((__force __u32)(__be32)(x))
 #define __cpu_to_be16(x) ((__force __be16)__swab16((x)))
 #define __be16_to_cpu(x) __swab16((__force __u16)(__be16)(x))
-
+#ifdef __KERNEL__
 static inline __le64 __cpu_to_le64p(const __u64 *p)
 {
 	return (__force __le64)*p;
@@ -100,6 +100,6 @@ static inline __u16 __be16_to_cpup(const __be16 *p)
 #define __be32_to_cpus(x) __swab32s((x))
 #define __cpu_to_be16s(x) __swab16s((x))
 #define __be16_to_cpus(x) __swab16s((x))
-
+#endif
 
 #endif /* _UAPI_LINUX_BYTEORDER_LITTLE_ENDIAN_H */

@@ -108,11 +108,11 @@ struct nlmsgerr {
 #define NETLINK_NO_ENOBUFS	5
 #define NETLINK_RX_RING		6
 #define NETLINK_TX_RING		7
-
+#ifdef __KERNEL__
 struct nl_pktinfo {
 	__u32	group;
 };
-
+#endif
 struct nl_mmap_req {
 	unsigned int	nm_block_size;
 	unsigned int	nm_block_nr;
